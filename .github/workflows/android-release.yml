@@ -81,7 +81,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$HOME/.config/godot"
-          cat > "$HOME/.config/godot/editor_settings-4.tres" <<EOF_SETTINGS
+          EDITOR_SETTINGS="$HOME/.config/godot/editor_settings-${GODOT_VERSION%.*}.tres"
+          cat > "$EDITOR_SETTINGS" <<EOF_SETTINGS
           [gd_resource type="EditorSettings" format=3]
 
           [resource]
