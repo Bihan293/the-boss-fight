@@ -30,13 +30,21 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # The action's default "tools" package no longer exists in recent
+          # cmdline-tools, which made sdkmanager fail. Install only platform-tools.
+          packages: "platform-tools"
 
       - name: Install Android SDK packages
         shell: bash
         run: |
           set -euo pipefail
           yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          sdkmanager \
+            "platforms;android-34" \
+            "platforms;android-35" \
+            "build-tools;34.0.0" \
+            "build-tools;35.0.0"
 
       - name: Install Godot and matching export templates
         shell: bash

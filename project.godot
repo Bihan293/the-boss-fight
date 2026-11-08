@@ -10,9 +10,11 @@ config/description="Top-down pixel-art boss fight prototype."
 [display]
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/window_width_override=1280
-window/window_height_override=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/handheld/orientation=4
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
 
 [rendering]
 renderer/rendering_method="gl_compatibility"
